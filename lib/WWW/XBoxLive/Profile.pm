@@ -59,11 +59,14 @@ use Object::Tiny qw{
 
 =attr recent_games
 
+Returns an array of L<WWW::XBoxLive::Game> objects.
+
 =attr reputation
 
 =head1 SEE ALSO
 
 =for :list
 * L<WWW::XBoxLive>
+* L<WWW::XBoxLive::Game>
 
 =cut
