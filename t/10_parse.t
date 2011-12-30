@@ -32,4 +32,6 @@ is( $profile->account_status, 'gold',            'account_status' );
 is( $profile->location,       'UK',              'location' );
 is( $profile->motto,          'Am I drunk yet?', 'motto' );
 is( $profile->name,           'Andrew',          'name' );
-is( $profile->online_status, 'Online playing Xbox Dashboard', 'online_status' );
+is( $profile->online_status,
+    'Last seen less than a minute ago playing Xbox Dashboard',
+    'online_status' );
