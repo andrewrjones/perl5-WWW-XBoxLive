@@ -35,7 +35,7 @@ sub get {
 }
 
 # parse the HTML
-sub _parse {
+sub _parseMemberPage {
     my ( $this, $html ) = @_;
 
     my $tree = HTML::TreeBuilder::XPath->new_from_content($html);
@@ -65,6 +65,38 @@ sub _parse {
         motto          => $motto,
         name           => $name,
         online_status  => $online_status,
+    );
+
+    return $profile;
+}
+
+# parse the HTML
+sub _parseCard {
+    my ( $this, $html ) = @_;
+
+    my $tree = HTML::TreeBuilder::XPath->new_from_content($html);
+
+    my $bio = _trimWhitespace( $tree->findvalue('//div[@id="Bio"]') );
+    my $gamerscore =
+      _trimWhitespace( $tree->findvalue('//div[@id="Gamerscore"]') );
+    my $motto    = _trimWhitespace( $tree->findvalue('//div[@id="Motto"]') );
+    my $location = _trimWhitespace( $tree->findvalue('//div[@id="Location"]') );
+    my $name     = _trimWhitespace( $tree->findvalue('//div[@id="Name"]') );
+
+    my $account_status = 'free';
+    if ( $html =~ /<div class=.*Gold.*>/ ) {
+        $account_status = 'gold';
+    }
+
+    $tree->delete;
+
+    my $profile = WWW::XBoxLive::Profile->new(
+        account_status => $account_status,
+        bio            => $bio,
+        gamerscore     => $gamerscore,
+        location       => $location,
+        motto          => $motto,
+        name           => $name,
     );
 
     return $profile;
