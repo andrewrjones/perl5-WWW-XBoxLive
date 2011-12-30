@@ -59,9 +59,9 @@ sub _parse {
         account_status => $account_status,
         bio            => $bio,
         location       => $location,
-        motto         => $motto,
-        name          => $name,
-        online_status => $online_status,
+        motto          => $motto,
+        name           => $name,
+        online_status  => $online_status,
     );
 
     return $profile;
