@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 10;
+use Test::More tests => 11;
 
 use FindBin qw($Bin);
 
@@ -29,6 +29,7 @@ is(
     'bio'
 );
 is( $profile->account_status, 'gold',            'account_status' );
+is( $profile->gamerscore,     '135',             'gamerscore' );
 is( $profile->location,       'UK',              'location' );
 is( $profile->motto,          'Am I drunk yet?', 'motto' );
 is( $profile->name,           'Andrew',          'name' );

@@ -42,6 +42,8 @@ sub _parse {
 
     my $bio = _trimWhitespace(
         $tree->findvalue('//div[@class="bio"]/div[@class="value"]') );
+    my $gamerscore =
+      _trimWhitespace( $tree->findvalue('//div[@class="gamerscore"]') );
     my $motto    = _trimWhitespace( $tree->findvalue('//div[@class="motto"]') );
     my $location = _trimWhitespace(
         $tree->findvalue('//div[@class="location"]/div[@class="value"]') );
@@ -58,6 +60,7 @@ sub _parse {
     my $profile = WWW::XBoxLive::Profile->new(
         account_status => $account_status,
         bio            => $bio,
+        gamerscore     => $gamerscore,
         location       => $location,
         motto          => $motto,
         name           => $name,
