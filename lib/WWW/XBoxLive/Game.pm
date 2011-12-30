@@ -2,16 +2,17 @@ use strict;
 use warnings;
 
 package WWW::XBoxLive::Game;
+
 # ABSTRACT: Represents an XBox Live game
 
 use Object::Tiny qw{
-    available_achievements
-    available_gamerscore
-    earned_gamerscore
-    earned_achievements
-    last_played
-    percentage_complete
-    title
+  available_achievements
+  available_gamerscore
+  earned_gamerscore
+  earned_achievements
+  last_played
+  percentage_complete
+  title
 };
 
 1;

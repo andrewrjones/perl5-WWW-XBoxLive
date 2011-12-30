@@ -11,10 +11,10 @@ require_ok('WWW::XBoxLive::Game');
 my $profile = new_ok(
     'WWW::XBoxLive::Game',
     [
-        title => 'Fifa 12',
-        percentage_complete  => '50',
+        title               => 'Fifa 12',
+        percentage_complete => '50',
     ]
 );
 
-is($profile->title, 'Fifa 12');
-is($profile->percentage_complete, '50');
+is( $profile->title,               'Fifa 12' );
+is( $profile->percentage_complete, '50' );

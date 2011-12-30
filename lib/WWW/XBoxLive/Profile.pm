@@ -2,25 +2,26 @@ use strict;
 use warnings;
 
 package WWW::XBoxLive::Profile;
+
 # ABSTRACT: Represents an XBox Live profile
 
 use Object::Tiny qw{
-    account_status
-    avatars
-    bio
-    gamerscore
-    gamertag
-    gender
-    is_cheater
-    is_valid
-    location
-    motto
-    name
-    online
-    online_status
-    profile_link
-    recent_games
-    reputation
+  account_status
+  avatars
+  bio
+  gamerscore
+  gamertag
+  gender
+  is_cheater
+  is_valid
+  location
+  motto
+  name
+  online
+  online_status
+  profile_link
+  recent_games
+  reputation
 };
 
 1;

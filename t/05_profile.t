@@ -12,9 +12,9 @@ my $profile = new_ok(
     'WWW::XBoxLive::Profile',
     [
         gamertag => 'BrazenStraw3',
-        name  => 'Andrew',
+        name     => 'Andrew',
     ]
 );
 
-is($profile->gamertag, 'BrazenStraw3');
-is($profile->name, 'Andrew');
+is( $profile->gamertag, 'BrazenStraw3' );
+is( $profile->name,     'Andrew' );
