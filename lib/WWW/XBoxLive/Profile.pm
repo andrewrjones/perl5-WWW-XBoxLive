@@ -30,7 +30,12 @@ use Object::Tiny qw{
 
   my $profile = WWW::XBoxLive::Profile->new(%data);
 
+  say $profile->name;
+  say $profile->location;
+
 =attr account_status
+
+Either C<gold> or C<free>
 
 =attr avatars
 
