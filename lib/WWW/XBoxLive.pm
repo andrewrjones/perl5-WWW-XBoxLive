@@ -38,6 +38,7 @@ sub get {
 sub _parseCard {
     my ( $this, $html ) = @_;
 
+    # generate HTML tree
     my $tree = HTML::TreeBuilder::XPath->new_from_content($html);
 
     my $bio = _trimWhitespace( $tree->findvalue('//div[@id="Bio"]') );
@@ -48,11 +49,13 @@ sub _parseCard {
     my $location = _trimWhitespace( $tree->findvalue('//div[@id="Location"]') );
     my $name     = _trimWhitespace( $tree->findvalue('//div[@id="Name"]') );
 
+    # guess account status
     my $account_status = 'free';
     if ( $tree->exists('//body/div[@class=~ /Gold/]') ) {
         $account_status = 'gold';
     }
 
+    # find gender
     my $gender = 'unknown';
     if ( $tree->exists('//body/div[@class=~ /Male/]') ) {
         $gender = 'male';
@@ -61,6 +64,7 @@ sub _parseCard {
         $gender = 'female';
     }
 
+    # count the reputation stars
     my @reputation_stars =
       $tree->findnodes('//div[@class="RepContainer"]/div[@class="Star Full"]');
     my $reputation = scalar @reputation_stars;
@@ -110,8 +114,10 @@ sub _parseCard {
         }
     }
 
+    # to ensure we do not have memory leaks
     $tree->delete;
 
+    # create new gamercard
     my $gamercard = WWW::XBoxLive::Gamercard->new(
         account_status => $account_status,
         bio            => $bio,
