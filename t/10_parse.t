@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 30;
+use Test::More tests => 34;
 
 use FindBin qw($Bin);
 
@@ -24,6 +24,7 @@ $/ = $hold;
 my $gamercard = $xbox_live->_parseCard($html);
 isa_ok( $gamercard, 'WWW::XBoxLive::Gamercard' );
 
+ok( $gamercard->is_valid, 'is_valid' );
 is(
     $gamercard->bio,
 'Software developer and a bit of a geek. Arsenal fan. http://twitter.com/andrewrjones http://andrew-jones.com',
@@ -59,5 +60,22 @@ is( $game->earned_gamerscore,      135,  'game 2 earned_gamerscore' );
 is( $game->last_played,         '12/31/2011', 'game 2 last_played' );
 is( $game->percentage_complete, '13%',        'game 2 percentage_complete' );
 is( $game->title,               'FIFA 12',    'game 2 title' );
+
+close $fh;
+
+# invalid gamercard
+open( $fh, '<:encoding(UTF-8)',
+    "$Bin/resources/skflgnskjdgnsuibfsdgdsgsgdsg.card" )
+  or die $!;
+$hold = $/;
+undef $/;
+$html = <$fh>;
+$/    = $hold;
+
+$gamercard = $xbox_live->_parseCard($html);
+isa_ok( $gamercard, 'WWW::XBoxLive::Gamercard' );
+
+is( $gamercard->gamertag, 'skflgnskjdgnsuibfsdgdsgsgdsg', 'gamertag' );
+ok( !$gamercard->is_valid, 'is_valid' );
 
 close $fh;

@@ -10,6 +10,9 @@ use WWW::XBoxLive::Game;
 
 use HTML::TreeBuilder::XPath;
 
+use constant INVALID_AVATAR =>
+  'http://image.xboxlive.com//global/t.FFFE07D1/tile/0/20000';
+
 =method new()
 
 Create a new WWW::XBoxLive object
@@ -41,10 +44,21 @@ sub _parseCard {
     # generate HTML tree
     my $tree = HTML::TreeBuilder::XPath->new_from_content($html);
 
+    # get the gamertag
+    my $gamertag = _trimWhitespace( $tree->findvalue('//title') );
+
+    # is valid? If not, then skip everything else
+    my $gamerpic = $tree->findvalue('//img[@id="Gamerpic"]/@src');
+    if ( $gamerpic eq INVALID_AVATAR ) {
+        return WWW::XBoxLive::Gamercard->new(
+            gamertag => $gamertag,
+            is_valid => 0,
+        );
+    }
+
     my $bio = _trimWhitespace( $tree->findvalue('//div[@id="Bio"]') );
     my $gamerscore =
       _trimWhitespace( $tree->findvalue('//div[@id="Gamerscore"]') );
-    my $gamertag = _trimWhitespace( $tree->findvalue('//title') );
     my $motto    = _trimWhitespace( $tree->findvalue('//div[@id="Motto"]') );
     my $location = _trimWhitespace( $tree->findvalue('//div[@id="Location"]') );
     my $name     = _trimWhitespace( $tree->findvalue('//div[@id="Name"]') );
@@ -124,6 +138,7 @@ sub _parseCard {
         gamerscore     => $gamerscore,
         gamertag       => $gamertag,
         gender         => $gender,
+        is_valid       => 1,
         location       => $location,
         motto          => $motto,
         name           => $name,
