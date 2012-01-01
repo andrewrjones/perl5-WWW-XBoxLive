@@ -67,7 +67,7 @@ Either C<male>, C<female> or C<unknown>.
 
 =attr recent_games
 
-Returns an array of L<WWW::XBoxLive::Game> objects.
+Returns an array ref of L<WWW::XBoxLive::Game> objects.
 
 =attr reputation
 

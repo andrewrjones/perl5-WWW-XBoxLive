@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 12;
+use Test::More tests => 29;
 
 use FindBin qw($Bin);
 
@@ -14,7 +14,7 @@ use WWW::XBoxLive::Gamercard;
 
 my $xbox_live = new_ok( 'WWW::XBoxLive', );
 
-open( my $fh, '<', "$Bin/resources/BrazenStraw3.card" ) or die $!;
+open( my $fh, '<:encoding(UTF-8)', "$Bin/resources/BrazenStraw3.card" ) or die $!;
 my $hold = $/;
 undef $/;
 my $html = <$fh>;
@@ -35,5 +35,27 @@ is( $gamercard->gender,         'male',            'gender' );
 is( $gamercard->location,       'UK',              'location' );
 is( $gamercard->motto,          'Am I drunk yet?', 'motto' );
 is( $gamercard->name,           'Andrew',          'name' );
+
+is( scalar @{ $gamercard->recent_games }, 2, '2 recent games' );
+
+my $game = $gamercard->recent_games->[0];
+isa_ok( $game, 'WWW::XBoxLive::Game' );
+is( $game->available_achievements, 50,   'game 1 available_achievements' );
+is( $game->available_gamerscore,   1000, 'game 1 available_gamerscore' );
+is( $game->earned_achievements,    2,    'game 1 earned_achievements' );
+is( $game->earned_gamerscore,      15,   'game 1 earned_gamerscore' );
+is( $game->last_played,         '1/1/2012', 'game 1 last_played' );
+is( $game->percentage_complete, '4%',       'game 1 percentage_complete' );
+like( $game->title, qr/Modern Warfare/, 'game 1 title' );
+
+$game = $gamercard->recent_games->[1];
+isa_ok( $game, 'WWW::XBoxLive::Game' );
+is( $game->available_achievements, 45,   'game 2 available_achievements' );
+is( $game->available_gamerscore,   1000, 'game 2 available_gamerscore' );
+is( $game->earned_achievements,    6,    'game 2 earned_achievements' );
+is( $game->earned_gamerscore,      135,  'game 2 earned_gamerscore' );
+is( $game->last_played,         '12/31/2011', 'game 2 last_played' );
+is( $game->percentage_complete, '13%',        'game 2 percentage_complete' );
+is( $game->title,               'FIFA 12',    'game 2 title' );
 
 close $fh;
