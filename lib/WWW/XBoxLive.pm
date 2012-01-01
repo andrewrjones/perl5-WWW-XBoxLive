@@ -61,6 +61,10 @@ sub _parseCard {
         $gender = 'female';
     }
 
+    my @reputation_stars =
+      $tree->findnodes('//div[@class="RepContainer"]/div[@class="Star Full"]');
+    my $reputation = scalar @reputation_stars;
+
     # games
     my @recent_games;
     for my $i ( 1 .. 5 ) {
@@ -118,6 +122,7 @@ sub _parseCard {
         motto          => $motto,
         name           => $name,
         recent_games   => \@recent_games,
+        reputation     => $reputation,
     );
 
     return $gamercard;

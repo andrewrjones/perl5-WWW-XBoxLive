@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 29;
+use Test::More tests => 30;
 
 use FindBin qw($Bin);
 
@@ -36,6 +36,7 @@ is( $gamercard->gender,         'male',            'gender' );
 is( $gamercard->location,       'UK',              'location' );
 is( $gamercard->motto,          'Am I drunk yet?', 'motto' );
 is( $gamercard->name,           'Andrew',          'name' );
+is( $gamercard->reputation,     3,                 'reputation' );
 
 is( scalar @{ $gamercard->recent_games }, 2, '2 recent games' );
 
