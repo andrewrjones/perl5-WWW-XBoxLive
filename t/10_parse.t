@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 11;
+use Test::More tests => 12;
 
 use FindBin qw($Bin);
 
@@ -30,6 +30,7 @@ is(
 );
 is( $gamercard->account_status, 'gold',            'account_status' );
 is( $gamercard->gamerscore,     '150',             'gamerscore' );
+is( $gamercard->gamertag,       'BrazenStraw3',    'gamertag' );
 is( $gamercard->gender,         'male',            'gender' );
 is( $gamercard->location,       'UK',              'location' );
 is( $gamercard->motto,          'Am I drunk yet?', 'motto' );

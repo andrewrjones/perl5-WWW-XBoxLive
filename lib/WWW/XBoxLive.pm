@@ -43,6 +43,7 @@ sub _parseCard {
     my $bio = _trimWhitespace( $tree->findvalue('//div[@id="Bio"]') );
     my $gamerscore =
       _trimWhitespace( $tree->findvalue('//div[@id="Gamerscore"]') );
+    my $gamertag = _trimWhitespace( $tree->findvalue('//title') );
     my $motto    = _trimWhitespace( $tree->findvalue('//div[@id="Motto"]') );
     my $location = _trimWhitespace( $tree->findvalue('//div[@id="Location"]') );
     my $name     = _trimWhitespace( $tree->findvalue('//div[@id="Name"]') );
@@ -66,6 +67,7 @@ sub _parseCard {
         account_status => $account_status,
         bio            => $bio,
         gamerscore     => $gamerscore,
+        gamertag       => $gamertag,
         gender         => $gender,
         location       => $location,
         motto          => $motto,
