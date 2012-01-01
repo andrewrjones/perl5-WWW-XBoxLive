@@ -18,7 +18,7 @@ open( my $fh, '<', "$Bin/resources/BrazenStraw3.card" ) or die $!;
 my $hold = $/;
 undef $/;
 my $html = <$fh>;
-$/    = $hold;
+$/ = $hold;
 
 my $gamercard = $xbox_live->_parseCard($html);
 isa_ok( $gamercard, 'WWW::XBoxLive::Gamercard' );
