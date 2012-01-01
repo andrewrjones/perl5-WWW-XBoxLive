@@ -7,7 +7,6 @@ package WWW::XBoxLive::Gamercard;
 
 use Object::Tiny qw{
   account_status
-  avatars
   bio
   gamerscore
   gamertag
@@ -24,6 +23,33 @@ use Object::Tiny qw{
   reputation
 };
 
+sub avatar_small {
+    my ($this) = @_;
+
+    return unless $this->gamertag;
+
+    return sprintf( 'http://avatar.xboxlive.com/avatar/%s/avatarpic-s.png',
+        $this->gamertag );
+}
+
+sub avatar_large {
+    my ($this) = @_;
+
+    return unless $this->gamertag;
+
+    return sprintf( 'http://avatar.xboxlive.com/avatar/%s/avatarpic-l.png',
+        $this->gamertag );
+}
+
+sub avatar_body {
+    my ($this) = @_;
+
+    return unless $this->gamertag;
+
+    return sprintf( 'http://avatar.xboxlive.com/avatar/%s/avatar-body.png',
+        $this->gamertag );
+}
+
 1;
 
 =head1 SYNOPSIS
@@ -37,7 +63,17 @@ use Object::Tiny qw{
 
 Either C<gold> or C<free>.
 
-=attr avatars
+=attr avatar_small
+
+URL to the small avatar pic. For example, L<http://avatar.xboxlive.com/avatar/BrazenStraw3/avatarpic-s.png>.
+
+=attr avatar_large
+
+URL to the large avatar pic. For example, L<http://avatar.xboxlive.com/avatar/BrazenStraw3/avatarpic-l.png>.
+
+=attr avatar_body
+
+URL to the avatar body pic. For example, L<http://avatar.xboxlive.com/avatar/BrazenStraw3/avatar-body.png>.
 
 =attr bio
 
