@@ -14,7 +14,8 @@ use WWW::XBoxLive::Gamercard;
 
 my $xbox_live = new_ok( 'WWW::XBoxLive', );
 
-open( my $fh, '<:encoding(UTF-8)', "$Bin/resources/BrazenStraw3.card" ) or die $!;
+open( my $fh, '<:encoding(UTF-8)', "$Bin/resources/BrazenStraw3.card" )
+  or die $!;
 my $hold = $/;
 undef $/;
 my $html = <$fh>;
