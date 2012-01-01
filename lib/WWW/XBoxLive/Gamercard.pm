@@ -35,7 +35,7 @@ use Object::Tiny qw{
 
 =attr account_status
 
-Either C<gold> or C<free>
+Either C<gold> or C<free>.
 
 =attr avatars
 
@@ -46,6 +46,8 @@ Either C<gold> or C<free>
 =attr gamertag
 
 =attr gender
+
+Either C<male>, C<female> or C<unknown>.
 
 =attr is_cheater
 

@@ -52,12 +52,21 @@ sub _parseCard {
         $account_status = 'gold';
     }
 
+    my $gender = 'unknown';
+    if ( $html =~ /<div class=.*Male.*>/ ) {
+        $gender = 'male';
+    }
+    elsif ( $html =~ /<div class=.*Female.*>/ ) {
+        $gender = 'female';
+    }
+
     $tree->delete;
 
     my $gamercard = WWW::XBoxLive::Gamercard->new(
         account_status => $account_status,
         bio            => $bio,
         gamerscore     => $gamerscore,
+        gender         => $gender,
         location       => $location,
         motto          => $motto,
         name           => $name,
