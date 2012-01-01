@@ -27,7 +27,7 @@ is( $gamercard->avatar_large,
 is( $gamercard->avatar_body,
     'http://avatar.xboxlive.com/avatar/BrazenStraw3/avatar-body.png' );
 
-$gamercard = new_ok( 'WWW::XBoxLive::Gamercard' );
+$gamercard = new_ok('WWW::XBoxLive::Gamercard');
 ok( !$gamercard->avatar_small );
 ok( !$gamercard->avatar_large );
 ok( !$gamercard->avatar_body );
