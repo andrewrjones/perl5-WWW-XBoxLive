@@ -29,7 +29,7 @@ is(
     'bio'
 );
 is( $gamercard->account_status, 'gold',            'account_status' );
-is( $gamercard->gamerscore,     '135',             'gamerscore' );
+is( $gamercard->gamerscore,     '150',             'gamerscore' );
 is( $gamercard->gender,         'male',            'gender' );
 is( $gamercard->location,       'UK',              'location' );
 is( $gamercard->motto,          'Am I drunk yet?', 'motto' );
