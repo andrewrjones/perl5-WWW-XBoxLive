@@ -49,15 +49,15 @@ sub _parseCard {
     my $name     = _trimWhitespace( $tree->findvalue('//div[@id="Name"]') );
 
     my $account_status = 'free';
-    if ( $html =~ /<div class=.*Gold.*>/ ) {
+    if ( $tree->exists('//body/div[@class=~ /Gold/]') ) {
         $account_status = 'gold';
     }
 
     my $gender = 'unknown';
-    if ( $html =~ /<div class=.*Male.*>/ ) {
+    if ( $tree->exists('//body/div[@class=~ /Male/]') ) {
         $gender = 'male';
     }
-    elsif ( $html =~ /<div class=.*Female.*>/ ) {
+    elsif ( $tree->exists('//body/div[@class=~ /Female/]') ) {
         $gender = 'female';
     }
 
