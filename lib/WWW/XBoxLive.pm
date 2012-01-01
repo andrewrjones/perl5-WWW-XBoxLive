@@ -64,9 +64,12 @@ sub _parseCard {
     my $name     = _trimWhitespace( $tree->findvalue('//div[@id="Name"]') );
 
     # guess account status
-    my $account_status = 'free';
+    my $account_status = 'unknown';
     if ( $tree->exists('//body/div[@class=~ /Gold/]') ) {
         $account_status = 'gold';
+    }
+    elsif ( $tree->exists('//body/div[@class=~ /Silver/]') ) {
+        $account_status = 'silver';
     }
 
     # find gender

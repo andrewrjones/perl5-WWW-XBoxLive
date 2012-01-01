@@ -61,7 +61,7 @@ sub avatar_body {
 
 =attr account_status
 
-Either C<gold> or C<free>.
+Either C<gold>, C<silver> or C<unknown>.
 
 =attr avatar_small
 

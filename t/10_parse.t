@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 34;
+use Test::More tests => 39;
 
 use FindBin qw($Bin);
 
@@ -60,6 +60,24 @@ is( $game->earned_gamerscore,      135,  'game 2 earned_gamerscore' );
 is( $game->last_played,         '12/31/2011', 'game 2 last_played' );
 is( $game->percentage_complete, '13%',        'game 2 percentage_complete' );
 is( $game->title,               'FIFA 12',    'game 2 title' );
+
+close $fh;
+
+# female silver gamercard
+open( $fh, '<:encoding(UTF-8)', "$Bin/resources/miss.card" )
+  or die $!;
+$hold = $/;
+undef $/;
+$html = <$fh>;
+$/    = $hold;
+
+$gamercard = $xbox_live->_parseCard($html);
+isa_ok( $gamercard, 'WWW::XBoxLive::Gamercard' );
+
+is( $gamercard->account_status, 'silver', 'account_status' );
+is( $gamercard->gamertag,       'MISS',   'gamertag' );
+is( $gamercard->gender,         'female', 'gender' );
+ok( $gamercard->is_valid, 'is_valid' );
 
 close $fh;
 
