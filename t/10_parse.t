@@ -10,7 +10,7 @@ use FindBin qw($Bin);
 BEGIN { use_ok('WWW::XBoxLive'); }
 require_ok('WWW::XBoxLive');
 
-use WWW::XBoxLive::Profile;
+use WWW::XBoxLive::Gamercard;
 
 my $xbox_live = new_ok( 'WWW::XBoxLive', );
 
@@ -20,18 +20,18 @@ undef $/;
 my $html = <$fh>;
 $/    = $hold;
 
-my $profile = $xbox_live->_parseCard($html);
-isa_ok( $profile, 'WWW::XBoxLive::Profile' );
+my $gamercard = $xbox_live->_parseCard($html);
+isa_ok( $gamercard, 'WWW::XBoxLive::Gamercard' );
 
 is(
-    $profile->bio,
+    $gamercard->bio,
 'Software developer and a bit of a geek. Arsenal fan. http://twitter.com/andrewrjones http://andrew-jones.com',
     'bio'
 );
-is( $profile->account_status, 'gold',            'account_status' );
-is( $profile->gamerscore,     '135',             'gamerscore' );
-is( $profile->location,       'UK',              'location' );
-is( $profile->motto,          'Am I drunk yet?', 'motto' );
-is( $profile->name,           'Andrew',          'name' );
+is( $gamercard->account_status, 'gold',            'account_status' );
+is( $gamercard->gamerscore,     '135',             'gamerscore' );
+is( $gamercard->location,       'UK',              'location' );
+is( $gamercard->motto,          'Am I drunk yet?', 'motto' );
+is( $gamercard->name,           'Andrew',          'name' );
 
 close $fh;

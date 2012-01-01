@@ -5,11 +5,11 @@ use warnings;
 
 use Test::More tests => 5;
 
-BEGIN { use_ok('WWW::XBoxLive::Profile'); }
-require_ok('WWW::XBoxLive::Profile');
+BEGIN { use_ok('WWW::XBoxLive::Gamercard'); }
+require_ok('WWW::XBoxLive::Gamercard');
 
 my $profile = new_ok(
-    'WWW::XBoxLive::Profile',
+    'WWW::XBoxLive::Gamercard',
     [
         gamertag => 'BrazenStraw3',
         name     => 'Andrew',

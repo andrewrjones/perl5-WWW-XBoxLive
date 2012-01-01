@@ -3,9 +3,9 @@ use warnings;
 
 package WWW::XBoxLive;
 
-# ABSTRACT: Get XBox Live profile information
+# ABSTRACT: Get XBox Live gamercard information
 
-use WWW::XBoxLive::Profile;
+use WWW::XBoxLive::Gamercard;
 use WWW::XBoxLive::Game;
 
 use HTML::TreeBuilder::XPath;
@@ -54,7 +54,7 @@ sub _parseCard {
 
     $tree->delete;
 
-    my $profile = WWW::XBoxLive::Profile->new(
+    my $gamercard = WWW::XBoxLive::Gamercard->new(
         account_status => $account_status,
         bio            => $bio,
         gamerscore     => $gamerscore,
@@ -63,7 +63,7 @@ sub _parseCard {
         name           => $name,
     );
 
-    return $profile;
+    return $gamercard;
 }
 
 # trims whitespace from a string
@@ -80,12 +80,12 @@ sub _trimWhitespace {
 
   my $xbox_live = WWW::XBoxLive->new();
 
-  my $profile = $xbox_live->get('BrazenStraw3');
+  my $gamercard = $xbox_live->get('BrazenStraw3');
 
-  say $profile->name;
-  say $profile->online_status;
+  say $gamercard->name;
+  say $gamercard->online_status;
 
-  for my $game ($profile->recent_games){
+  for my $game ($gamercard->recent_games){
     say $game->title;
     say $game->last_played;
   }

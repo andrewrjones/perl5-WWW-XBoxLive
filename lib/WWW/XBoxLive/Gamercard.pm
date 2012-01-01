@@ -1,9 +1,9 @@
 use strict;
 use warnings;
 
-package WWW::XBoxLive::Profile;
+package WWW::XBoxLive::Gamercard;
 
-# ABSTRACT: Represents an XBox Live profile
+# ABSTRACT: Represents an XBox Live Gamercard
 
 use Object::Tiny qw{
   account_status
@@ -28,10 +28,10 @@ use Object::Tiny qw{
 
 =head1 SYNOPSIS
 
-  my $profile = WWW::XBoxLive::Profile->new(%data);
+  my $gamercard = WWW::XBoxLive::Gamercard->new(%data);
 
-  say $profile->name;
-  say $profile->location;
+  say $gamercard->name;
+  say $gamercard->location;
 
 =attr account_status
 
