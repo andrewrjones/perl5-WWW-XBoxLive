@@ -13,7 +13,7 @@ my $mech = Test::WWW::Mechanize->new;
 
 my $xbox_live = new_ok('WWW::XBoxLive');
 
-my $gamercard = $xbox_live->get('BrazenStraw3');
+my $gamercard = $xbox_live->get_gamercard('BrazenStraw3');
 isa_ok( $gamercard, 'WWW::XBoxLive::Gamercard' );
 is( $gamercard->gamertag, 'BrazenStraw3', 'gamertag' );
 ok( $gamercard->is_valid, 'is_valid' );

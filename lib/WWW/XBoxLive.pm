@@ -20,7 +20,7 @@ use constant INVALID_AVATAR =>
 
 =method new()
 
-Create a new WWW::XBoxLive object
+Create a new WWW::XBoxLive object.
 
 =cut
 
@@ -35,13 +35,13 @@ sub new {
     return $self;
 }
 
-=method get( $gamertag )
+=method get_gamercard( $gamertag )
 
-Get a profile. Returns an WWW::XBoxLive::Gamercard object
+Get a gamercard. Returns an WWW::XBoxLive::Gamercard object.
 
 =cut
 
-sub get {
+sub get_gamercard {
     my ( $this, $gamertag ) = @_;
 
     # get the html
@@ -49,13 +49,13 @@ sub get {
       LWP::Simple::get( sprintf( GAMERCARD_URL, $this->{region}, $gamertag ) );
 
     # parse
-    my $gamercard = $this->_parseCard($html);
+    my $gamercard = $this->_parse_gamercard($html);
 
     return $gamercard;
 }
 
 # parse the HTML
-sub _parseCard {
+sub _parse_gamercard {
     my ( $this, $html ) = @_;
 
     # generate HTML tree

@@ -21,7 +21,7 @@ undef $/;
 my $html = <$fh>;
 $/ = $hold;
 
-my $gamercard = $xbox_live->_parseCard($html);
+my $gamercard = $xbox_live->_parse_gamercard($html);
 isa_ok( $gamercard, 'WWW::XBoxLive::Gamercard' );
 
 ok( $gamercard->is_valid, 'is_valid' );
@@ -71,7 +71,7 @@ undef $/;
 $html = <$fh>;
 $/    = $hold;
 
-$gamercard = $xbox_live->_parseCard($html);
+$gamercard = $xbox_live->_parse_gamercard($html);
 isa_ok( $gamercard, 'WWW::XBoxLive::Gamercard' );
 
 is( $gamercard->account_status, 'silver', 'account_status' );
@@ -89,7 +89,7 @@ undef $/;
 $html = <$fh>;
 $/    = $hold;
 
-$gamercard = $xbox_live->_parseCard($html);
+$gamercard = $xbox_live->_parse_gamercard($html);
 isa_ok( $gamercard, 'WWW::XBoxLive::Gamercard' );
 
 is( $gamercard->gamertag, 'skflgnskjdgnsuibfsdgdsgsgdsg', 'gamertag' );
