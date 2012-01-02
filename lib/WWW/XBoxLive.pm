@@ -201,6 +201,6 @@ This is a module to get and parse an XBox Live Gamercard (i.e. L<http://gamercar
 
 =head1 CREDITS
 
-Jason Clemons wrote a PHP version, which helped me write this version. It is available at L<https://github.com/JBlaze/Xbox-Gamercard-Data>
+Jason Clemons wrote a PHP version, which helped me write this version. It is available at L<https://github.com/JBlaze/Xbox-Gamercard-Data>.
 
 =cut
