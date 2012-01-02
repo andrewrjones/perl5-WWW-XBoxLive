@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 18;
+use Test::More tests => 19;
 use Test::WWW::Mechanize;
 
 BEGIN { use_ok('WWW::XBoxLive'); }
@@ -28,6 +28,8 @@ is( $gamercard->name, 'Andrew', 'name' );
 like( $gamercard->reputation, qr/\d/, 'reputation' );
 
 ok( $gamercard->recent_games, 'recent_games' );
+
+$mech->get_ok( $gamercard->profile_link );
 
 $mech->get_ok( $gamercard->avatar_small );
 $mech->get_ok( $gamercard->avatar_large );

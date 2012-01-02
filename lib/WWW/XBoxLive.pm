@@ -79,6 +79,7 @@ sub _parse_gamercard {
     my $motto    = _trimWhitespace( $tree->findvalue('//div[@id="Motto"]') );
     my $location = _trimWhitespace( $tree->findvalue('//div[@id="Location"]') );
     my $name     = _trimWhitespace( $tree->findvalue('//div[@id="Name"]') );
+    my $profile_link = $tree->findvalue('//a[@id="Gamertag"]/@href');
 
     # guess account status
     my $account_status = 'unknown';
@@ -162,6 +163,7 @@ sub _parse_gamercard {
         location       => $location,
         motto          => $motto,
         name           => $name,
+        profile_link   => $profile_link,
         recent_games   => \@recent_games,
         reputation     => $reputation,
     );
