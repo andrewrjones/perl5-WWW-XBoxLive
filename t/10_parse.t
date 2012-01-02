@@ -82,8 +82,7 @@ ok( $gamercard->is_valid, 'is_valid' );
 close $fh;
 
 # invalid gamercard
-open( $fh, '<:encoding(UTF-8)',
-    "$Bin/resources/skflgnskjdgnsuibfsdgdsgsgdsg.card" )
+open( $fh, '<:encoding(UTF-8)', "$Bin/resources/invalid.card" )
   or die $!;
 $hold = $/;
 undef $/;
