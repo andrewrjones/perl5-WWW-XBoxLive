@@ -8,8 +8,13 @@ package WWW::XBoxLive;
 use WWW::XBoxLive::Gamercard;
 use WWW::XBoxLive::Game;
 
-use HTML::TreeBuilder::XPath;
+use LWP::Simple              ();
+use HTML::TreeBuilder::XPath ();
 
+# the gamercard url
+use constant GAMERCARD_URL => 'http://gamercard.xbox.com/%s/%s.card';
+
+# if a user has this avatar, they are not a user
 use constant INVALID_AVATAR =>
   'http://image.xboxlive.com//global/t.FFFE07D1/tile/0/20000';
 
@@ -24,6 +29,9 @@ sub new {
     my $self  = {};
 
     bless( $self, $class );
+
+    $self->{region} = 'en-US';
+
     return $self;
 }
 
@@ -35,6 +43,15 @@ Get a profile. Returns an WWW::XBoxLive::Gamercard object
 
 sub get {
     my ( $this, $gamertag ) = @_;
+
+    # get the html
+    my $html =
+      LWP::Simple::get( sprintf( GAMERCARD_URL, $this->{region}, $gamertag ) );
+
+    # parse
+    my $gamercard = $this->_parseCard($html);
+
+    return $gamercard;
 }
 
 # parse the HTML
