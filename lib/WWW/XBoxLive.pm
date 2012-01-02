@@ -3,7 +3,7 @@ use warnings;
 
 package WWW::XBoxLive;
 
-# ABSTRACT: Get XBox Live gamercard information
+# ABSTRACT: Get XBox Live Gamercard information
 
 use WWW::XBoxLive::Gamercard;
 use WWW::XBoxLive::Game;
