@@ -38,7 +38,7 @@ sub new {
 
 =method get_gamercard( $gamertag )
 
-Get a gamercard. Returns an WWW::XBoxLive::Gamercard object.
+Get a gamercard. Returns an L<WWW::XBoxLive::Gamercard> object.
 
 =cut
 
@@ -189,9 +189,9 @@ sub _trimWhitespace {
   my $gamercard = $xbox_live->get('BrazenStraw3');
 
   say $gamercard->name;
-  say $gamercard->online_status;
+  say $gamercard->bio;
 
-  for my $game ($gamercard->recent_games){
+  for my $game (@{ $gamercard->recent_games }){
     say $game->title;
     say $game->last_played;
   }
@@ -199,6 +199,12 @@ sub _trimWhitespace {
 =head1 DESCRIPTION
 
 This is a module to get and parse an XBox Live Gamercard (i.e. L<http://gamercard.xbox.com/en-US/BrazenStraw3.card>).
+
+=head1 SEE ALSO
+
+=for :list
+* L<WWW::XBoxLive::Gamercard>
+* L<WWW::XBoxLive::Game>
 
 =head1 CREDITS
 
