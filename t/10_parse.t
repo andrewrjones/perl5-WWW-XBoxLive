@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 40;
+use Test::More tests => 43;
 
 use FindBin qw($Bin);
 
@@ -12,7 +12,11 @@ require_ok('WWW::XBoxLive');
 
 use WWW::XBoxLive::Gamercard;
 
-my $xbox_live = new_ok( 'WWW::XBoxLive', );
+my @args = ( { region => 'foo' } );
+my $xbox_live = new_ok( 'WWW::XBoxLive', \@args );
+is( $xbox_live->{region}, 'foo', 'region' );
+$xbox_live = new_ok('WWW::XBoxLive');
+is( $xbox_live->{region}, 'en-US', 'region' );
 
 open( my $fh, '<:encoding(UTF-8)', "$Bin/resources/BrazenStraw3.card" )
   or die $!;

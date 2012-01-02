@@ -18,19 +18,20 @@ use constant GAMERCARD_URL => 'http://gamercard.xbox.com/%s/%s.card';
 use constant INVALID_AVATAR =>
   'http://image.xboxlive.com//global/t.FFFE07D1/tile/0/20000';
 
-=method new()
+=method new(region => 'en-US')
 
-Create a new WWW::XBoxLive object.
+Create a new WWW::XBoxLive object. Optionally takes a region argument, which defaults to 'en-US'.
 
 =cut
 
 sub new {
     my $class = shift;
+    my $args  = shift || {};
     my $self  = {};
 
     bless( $self, $class );
 
-    $self->{region} = 'en-US';
+    $self->{region} = $args->{region} || 'en-US';
 
     return $self;
 }
