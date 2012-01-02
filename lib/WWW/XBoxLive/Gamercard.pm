@@ -11,13 +11,10 @@ use Object::Tiny qw{
   gamerscore
   gamertag
   gender
-  is_cheater
   is_valid
   location
   motto
   name
-  online
-  online_status
   profile_link
   recent_games
   reputation
@@ -77,35 +74,47 @@ URL to the avatar body pic. For example, L<http://avatar.xboxlive.com/avatar/Bra
 
 =attr bio
 
+The players bio.
+
 =attr gamerscore
 
+The players gamerscore.
+
 =attr gamertag
+
+The players gamertag.
 
 =attr gender
 
 Either C<male>, C<female> or C<unknown>.
 
-=attr is_cheater
-
 =attr is_valid
+
+True if this is a valid profile (i.e. a real player).
 
 =attr location
 
+The location of the player.
+
 =attr motto
+
+The players motto.
 
 =attr name
 
-=attr online
-
-=attr online_status
+The players name.
 
 =attr profile_link
+
+A link to the profile.
 
 =attr recent_games
 
 Returns an array ref of L<WWW::XBoxLive::Game> objects.
 
 =attr reputation
+
+The number of reputation stars the player has. A number between 1 and 5.
 
 =head1 SEE ALSO
 

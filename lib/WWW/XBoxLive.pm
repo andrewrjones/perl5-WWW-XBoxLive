@@ -195,4 +195,12 @@ sub _trimWhitespace {
     say $game->last_played;
   }
 
+=head1 DESCRIPTION
+
+This is a module to get and parse an XBox Live Gamercard (i.e. L<http://gamercard.xbox.com/en-US/BrazenStraw3.card>).
+
+=head1 CREDITS
+
+Jason Clemons wrote a PHP version, which helped me write this version. It is available at L<https://github.com/JBlaze/Xbox-Gamercard-Data>
+
 =cut
