@@ -1,5 +1,6 @@
 {{$NEXT}}
     Doc fixes.
+    Slightly better and more efficient way to parse the recent games.
 
 1.120020  2012-01-02 12:23:25 Europe/London
     Initial version.
