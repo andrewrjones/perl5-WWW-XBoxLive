@@ -18,7 +18,7 @@ isa_ok( $gamercard, 'WWW::XBoxLive::Gamercard' );
 is( $gamercard->gamertag, 'BrazenStraw3', 'gamertag' );
 ok( $gamercard->is_valid, 'is_valid' );
 
-is( $gamercard->account_status, 'gold', 'account_status' );
+like( $gamercard->account_status, qr/^(gold|silver)$/i, 'account_status' );
 ok( $gamercard->bio,        'bio' );
 ok( $gamercard->gamerscore, 'gamerscore' );
 is( $gamercard->gender,   'male', 'gender' );
