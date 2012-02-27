@@ -3,11 +3,20 @@
 use strict;
 use warnings;
 
-use Test::More tests => 19;
 use Test::WWW::Mechanize;
+use Net::Ping;
+use Test::More;
 
-BEGIN { use_ok('WWW::XBoxLive'); }
-require_ok('WWW::XBoxLive');
+my $p = Net::Ping->new( "syn", 2 );
+$p->port_number( getservbyname( "http", "tcp" ) );
+unless ( $p->ping('gamercard.xbox.com') ) {
+    plan skip_all => 'Can\t find gamercard.xbox.com for live tests';
+}
+else {
+    plan tests => 17;
+}
+
+use WWW::XBoxLive;
 
 my $mech = Test::WWW::Mechanize->new;
 

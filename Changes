@@ -1,4 +1,5 @@
 {{$NEXT}}
+    Ensure gamercard.xbox.com is available before doing live tests
 
 1.120260  2012-01-25 22:21:20 America/Los_Angeles
     Fix live unit tests, making them more resilient.
