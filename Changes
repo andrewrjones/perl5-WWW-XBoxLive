@@ -1,7 +1,8 @@
 {{$NEXT}}
+    Need at least Net::Ping 2.33 for testing.
 
 1.120580  2012-02-27 13:58:37 Europe/London
-    Ensure gamercard.xbox.com is available before doing live tests
+    Ensure gamercard.xbox.com is available before doing live tests.
 
 1.120260  2012-01-25 22:21:20 America/Los_Angeles
     Fix live unit tests, making them more resilient.
