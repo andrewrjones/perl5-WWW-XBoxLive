@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Test::WWW::Mechanize;
-use Net::Ping;
+use Net::Ping 2.33;
 use Test::More;
 
 my $p = Net::Ping->new( "syn", 2 );
