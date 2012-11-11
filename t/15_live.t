@@ -5,16 +5,8 @@ use warnings;
 
 use Test::WWW::Mechanize;
 use Net::Ping 2.33;
-use Test::More;
-
-my $p = Net::Ping->new( "syn", 2 );
-$p->port_number( getservbyname( "http", "tcp" ) );
-unless ( $p->ping('gamercard.xbox.com') ) {
-    plan skip_all => 'Can\t find gamercard.xbox.com for live tests';
-}
-else {
-    plan tests => 17;
-}
+use Test::More tests => 17;
+use HTTP::Online ':skip_all';
 
 use WWW::XBoxLive;
 
