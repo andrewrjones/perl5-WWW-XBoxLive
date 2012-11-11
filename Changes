@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+1.123160  2012-11-11 18:13:16 Europe/London
     Add LWP::Protocol::https as dependency.
     Use HTTP::Online to test for internet connection when running tests.
 
