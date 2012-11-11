@@ -1,4 +1,5 @@
 {{$NEXT}}
+    Add LWP::Protocol::https as dependency.
 
 1.120730  2012-03-13 12:41:33 Europe/London
     Need at least Net::Ping 2.33 for testing.
